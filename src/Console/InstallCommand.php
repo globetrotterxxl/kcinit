@@ -17,10 +17,13 @@ class InstallCommand extends Command
         // 1. Publish/Copy Controller
         $this->publishController();
 
-        // 2. Add .env variables
+        // 2. Publish/Copy User Model
+        $this->publishUserModel();
+
+        // 3. Add .env variables
         $this->updateEnv();
 
-        // 3. Append to config/services.php
+        // 4. Append to config/services.php
         $this->updateServicesConfig();
 
         $this->info('Installation complete!');
@@ -28,7 +31,6 @@ class InstallCommand extends Command
 
     protected function publishController()
     {
-
         $path = app_path('Http/Controllers/Auth/KeycloakAuthController.php');
         $directory = dirname($path);
         File::ensureDirectoryExists($directory);
@@ -37,6 +39,23 @@ class InstallCommand extends Command
             $this->line('  - AuthController created.');
         }
     }
+
+    protected function publishUserModel()
+    {
+        $path = app_path('Models/User.php');
+        $directory = dirname($path);
+        File::ensureDirectoryExists($directory);
+        if (!File::exists($path)) {
+            if (!$this->confirm("User Model already exists. Overwrite?")) {
+                return;
+            }
+            
+            File::copy(__DIR__.'/../Models/User.php', $path);
+            $this->line('  - User Model replaced.');
+
+        }
+    }
+
 
     protected function updateEnv()
     {
