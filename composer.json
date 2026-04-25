@@ -1,6 +1,7 @@
 {
     "name": "globetrotterxxl/kcinit",
     "description": "Initializes authorization components for Laravel.",
+    "license": "MIT",
     "type": "library",
     "autoload": {
         "psr-4": {
