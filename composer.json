@@ -1,0 +1,24 @@
+{
+    "name": "globetrotterxxl/kcinit",
+    "description": "Initializes authorization components for Laravel.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Globetrotterxxl\\KcInit\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Globetrotterxxl\\KcInit\\Providers\\KcInitServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0",
+        "laravel/socialite": "^5.26",
+        "socialiteproviders/keycloak": "^5.3"
+
+    }
+}
