@@ -29,7 +29,7 @@ class InstallCommand extends Command
     protected function publishController()
     {
 
-        $path = app_path('Http/Controllers/KeycloakAuthController.php');
+        $path = app_path('Http/Controllers/Auth/KeycloakAuthController.php');
         $directory = dirname($path);
         File::ensureDirectoryExists($directory);
         if (!File::exists($path)) {
